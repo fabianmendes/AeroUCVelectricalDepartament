@@ -6,7 +6,7 @@ ________________________________________________________________________________
 
 
 
-SAE _AerodesignUCV_ <b>&#127279;</b> "Aero…UCV"  {| <b>EUPLv1.2</b>, 2018 |}
+SAE _AerodesignUCV_ <b>&#127279;</b> "Aero…UCV"  {|<b>EUPLv1.2</b>, 2018|}
 
  ~*[Fabian M.](https://github.com/fabianmendes/isa-calculator)·.*
 _AeroUCV Team's Electrical Student,_
