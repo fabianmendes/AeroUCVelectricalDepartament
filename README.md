@@ -6,8 +6,8 @@ ________________________________________________________________________________
 
 
 
-SAE _AerodesignUCV_ &#127279; "Aero…UCV" |EUPLv1.2, 2018|
+SAE _AerodesignUCV_ <b>&#127279;</b> "Aero…UCV"  <b>|EUPLv1.2</b>, 2018 <b>|</b>
 
- ~[Victor Fabian Tadeo Mendes C.](https://github.com/fabianmendes/isa-calculator)·. 
+ ~*[Fabian M.](https://github.com/fabianmendes/isa-calculator)·.*
 _AeroUCV Team's Electrical Student,_
 _Departament Electrical Chief._
