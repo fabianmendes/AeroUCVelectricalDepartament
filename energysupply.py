@@ -84,7 +84,8 @@ try:
                 i = 1
               else:
                 if Wn >= 100 or Wn < -99:
-                    # hp = float(Wn)/745.7 # está en el finally.                        i = 0
+                    # hp = float(Wn)/745.7 # está en el finally.                        
+                    i = 0
                 elif Wn >= 1000:
                   print("Registrado. Tenga en cuenta que para competencias SAE Aerodesign",
                         "\nuna de las restricciones, es que lleguen <1000w al motor. Continuemos..")
