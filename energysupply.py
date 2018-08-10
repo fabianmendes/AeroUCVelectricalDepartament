@@ -173,6 +173,8 @@ try:
                 
                 V = promV
                 e = "\t\tSabiendo que su voltaje de alimentación estaría siendo de: "+str(V)+"V"
+                Vo[1] = Vo[1]/100
+
                 if V > Vo0:
                     print("\n¡Dicho valor supera al que puede otorgar la batería que tiene en uso! Inténtelo de nuevo.")
                     continue
@@ -189,7 +191,7 @@ Wp = V * promA  # Watts (potencia) que usted MANDARÁ a salir, de carga, DE LA B
                 # Voltios que proporcionará la batería. Min 18v, max 22~24v,
                 # en este caso será el promedio de no ponerlo el usuario..
                 # esos V están promediados. 
-Wo = []
+Wo = [0,1]
 #td = Wp / Wn  # esto no fue cierto... COMÉNTESE! Esta función no servirá de nada.
 # "Idealmente:
 # Carga de la bateria: 12V x 4A = 48W
@@ -200,8 +202,8 @@ Wo = []
 #  ^  ya se hizo más arriba, como 'Tmin'
 Mult = 10000
 for x in range(2):
-  W = int(V[x] * A[x])* Mult  # RECORDAR divivirlo entre la misma cifra.. (Mult = 10^4)
-  Wo.append(W)
+  W = float(V[x])*float(A[x]) # RECORDAR divivirlo entre la misma cifra.. (Mult = 10^4)
+  Wo.append(int(W * Mult))
 
 print("Entonces con ello se estima que:\n\t La batería durará, despreciando fugas y demás, idealmente:",
       format(promTmin, ".2f"), "Mins.")
@@ -214,5 +216,6 @@ print("\n Hablando de unos", str(format(Wp, ".2f"))+"W en promedio por parte de 
 # EUPLv1.2, 2018. AEROdesignUCV - #ROADtoMexico'19 !
 # Departamento General de Diseño Eléctrico.Equipo SAE Aerodesign, Universidad Central de Venezuela; Fac. Ingeniería. CCS
 
-#TODO: queda verificar y acomodar muy bien la ecuación para hallar y sacar el tiempo de autonomía, según la batería y motor.
 
+#TODO: queda VALIDAR verificar y acomodar muy bien la ecuación para hallar y sacar el tiempo de autonomía, según la batería y motor.
+#TODO hay que ver que esta ocurriendo en la línea 203.
