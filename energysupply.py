@@ -198,9 +198,9 @@ Wo = []
 # Saludos! " [extraído de http://www.todopic.com.ar/foros/index.php?topic=14382.0 el 2 de Ago, 2018. 13:30]
 # tdMin = td * 60  # OJO con EL NOMBRE de LA VARIABLE
 #  ^  ya se hizo más arriba, como 'Tmin'
-
+Mult = 10000
 for x in range(2):
-  Wo = V[x] * A[x]
+  Wo = int(V[x] * A[x])* Mult  # RECORDAR divivirlo entre la misma cifra.. (Mult = 10^4)
 
 print("Entonces con ello se estima que:\n\t La batería durará, despreciando fugas y demás, idealmente:",
       format(promTmin, ".2f"), "Mins.")
@@ -208,7 +208,7 @@ print("Entonces con ello se estima que:\n\t La batería durará, despreciando fu
 
 print(e, "\n\t\t..con un Amphere promedio (requeridos por el motor) de", str(format(promA, ".2f"))+"A, \n\t\t y un "
       "tiempo promedio de descarga, en cuanto a la batería, de", format(promTmin, ".2f"), "Mins.")
-print("\n Hablando de unos", str(format(Wp, ".2f"))+"W en promedio por parte de la batería, y\n\t", str(format(Wo[0], ".2f"))+"~"+str(format(Wo[0], ".2f"))+"W 'necesarios' o máx. hacia el avión, es decir, \n\tson los que podrían pasar por el Limitador de potencia en algún momento dado!")
+print("\n Hablando de unos", str(format(Wp, ".2f"))+"W en promedio por parte de la batería, y\n\t", str(format(Wo[0]/Mult, ".2f"))+"~"+str(format(Wo[0]/Mult, ".2f"))+"W 'necesarios' o máx. hacia el avión, es decir, \n\tson los que podrían pasar por el Limitador de potencia en algún momento dado!")
 
 # EUPLv1.2, 2018. AEROdesignUCV - #ROADtoMexico'19 !
 # Departamento General de Diseño Eléctrico.Equipo SAE Aerodesign, Universidad Central de Venezuela; Fac. Ingeniería. CCS
