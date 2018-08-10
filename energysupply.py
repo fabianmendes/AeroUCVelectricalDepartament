@@ -200,7 +200,8 @@ Wo = []
 #  ^  ya se hizo más arriba, como 'Tmin'
 Mult = 10000
 for x in range(2):
-  Wo = int(V[x] * A[x])* Mult  # RECORDAR divivirlo entre la misma cifra.. (Mult = 10^4)
+  W = int(V[x] * A[x])* Mult  # RECORDAR divivirlo entre la misma cifra.. (Mult = 10^4)
+  Wo.append(W)
 
 print("Entonces con ello se estima que:\n\t La batería durará, despreciando fugas y demás, idealmente:",
       format(promTmin, ".2f"), "Mins.")
