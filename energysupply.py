@@ -4,10 +4,10 @@ print('Hola, sean bienvenidos/as al programa test de baterías para Radio Contro
       'escrito con lenguaje Python 3.6.1 en licencia \033[1mEUPL-1.2\033[3m elaborado por, y para el\n'
       'equipo Aerodesign UCV. 2018; a través del compilador Pycharm, y el online Repl.it,\n'
       'bajo el NOMBRE: "Battery calculus work-lifetime in RC creations".\n', 'Les da la cordial bienvenida,')
-print("\t\t\t\t\t\t\t\t\t\t\t",
-      "~V. Fabian Mendes. \n\t\t\t\t\t\t\t\t\t\t\t"
-      "\x1B[3mAeroUCV's Electrial Student,",
-      "\n\t\t\t\t\t\t\t\t\t\t\tDepartament Electrical Chief.\x1B[3m")
+print("\t\t\t\t\t\t\t\t\t\t",
+      "~V. Fabian T. Mendes. \n\t\t\t\t\t\t\t\t\t\t"
+      "\x1B[3mAerodesign's Electrial Student,",
+      "\n\t\t\t\t\t\t\t\t\t\tG. Departament, Electrical Chief.\x1B[3m")
 print('''\033[1mP.S.\x1B[3m:''',
       '\033[1mEstos resultados don de manera ideal, calculados bajo condiciones ideales.\033[3m\n')
 
