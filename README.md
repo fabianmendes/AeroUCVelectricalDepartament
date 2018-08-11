@@ -4,8 +4,6 @@ By, and for, Aerodesign UCV's Team. Battery (in-flight) lifetime, automate, in m
 
 _______________________________________________________________________________________________________
 
-![PyPI](https://img.shields.io/pypi/pyversions/Django.svg) 
-
 
 
 
@@ -20,3 +18,4 @@ G. Departament Electrical Design Chef._
     #ROADtoMexico'19 | EUPL-1.2
 
 ![](https://img.shields.io/badge/JetBrains-Pycharm-brightgreen.svg?style=flat-square)
+ ![PyPI](https://img.shields.io/pypi/pyversions/Django.svg) 
