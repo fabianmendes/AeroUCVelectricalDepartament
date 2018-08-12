@@ -114,7 +114,7 @@ Ao = (mAh / 1000) * C  # se comentó porque este Ao es de la batería mismo. Yea
 # continua, y de explosición (por unos mSeg, máx POWER).
 # y EN REALIDAD ES: # En una hora puede dar ( )mA a una capacidad de descarga de ( )C = Ao
 # Listo.
-Ab = (Ao / C) * 60  # Ab son los ampere de a batería, por minutos. Los cuales serán usados para medir el T.
+Ab = (Ao / C)  # Ab son los ampere de la batería. Los cuales serán usados para medir el T. Recordemos que esta dividido por 1h.
 
 print("\t\tAmphere que PODRÍA llegar a pasar por el ESC: Ao = ",
       str(format(Ao, ".2f")) + "A, según los datos de la batería. \n\tTenga cidado en su selección del ESC;"
@@ -142,14 +142,14 @@ for x in range(2):
     # añade dicho elem. a la última posición de la lista; AÑADE.
     # An.insert(x, int(AnP))  # añade, inserta en la posición x de la lista.
 
-    Aptr = Ab / Ap  # ; A' prima igual a, "Ao" entre "A necesarios". [para luego, 60*(mA*h)/mA]
+    Aptr = (Ab*Mult) / Ap  # ; A' prima igual a, "Ao" entre "A necesarios". [para luego, 60*(mA*h)/mA]
 
     # Entonces Ap-tr será el 'tiempo relativo'.. Ap*60 = Tmin. Que introduciremos consiguientemente:
     Tmin.append(str(Aptr * 60))
     # Ap es una CONSTANTE, NO ES Amphere; mucho menos. Entonces da.. por 60, los mins de vida.
     # aquí deberá haber un diferencial.. una especie de.
 
-promTmin = ((float(Tmin[0]) + float(Tmin[1])) / (2 * Mult/10))
+promTmin = ((float(Tmin[0]) + float(Tmin[1])) / (2 * Mult))
 # convistiendolos de string a float para poder usar los decimales.. !
 
 promA = (A[0] + A[1]) / (2*Mult)
@@ -214,7 +214,7 @@ for x in range(2):
     W = float(Vo[x] * A[x]) / pow(Mult, 2)  # RECORDAR que ambos estaban Mult. por 1000.. (Mult = 10^3)
     Wo.append(str(format(W, ".2f")))
 
-TminImpri = float(Tmin[1]) / (Mult / 10)
+TminImpri = float(Tmin[1]) / Mult
 # había que convertir el valor que estaba en la lista 'Tmin[]' porque era str()...
 
 print("Entonces con ello se estima que:\n\t\t La batería durará, despreciando fugas y demás, idealmente: "
