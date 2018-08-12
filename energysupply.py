@@ -127,38 +127,6 @@ Vo1 = nS * 3.6544  # 'Vo[0]' Voltaje de la batería (Vo) a punto de descargarse 
 Vo = [int(Vo1 * Mult), int(Vo0 * Mult)]  # máx. Voltios en una batería; 3.7v min y 4.2 máx, o inicial.
 A = []  # Ampheres que deberan poder estar pasando (requeridos..) por el ESC según (..por:) el MOTOR!
 
-Tmin = []  # tiempo relativo que será ya en minutos.
-
-for x in range(2):
-    # por ser sólo dos valores en Vo.
-
-    # Ao = (mAh / 1000) * C ; no se usará, vea:
-    Ap = Wn / int(Vo[x] / Mult)  # Mult para contrarrestar los cien que le metí antes y así aprovechar los decimales pertinentes. Prima
-    # recordemos: W = i * V. Y de ello, con los Watts del motor y los Voltios de la batería damos con el A para nuestro T.
-    # T = Ab / (A * C) ; C es inversamente proporcional a la corriente (en este caso, Ab) de la batería para su tiempo de descarga.
-
-    A.append(int(Ap * Mult))
-    # se multiplica por Mult para luego lograr usar los decimales, puesto que las listas solo sportan str() e int().
-    # añade dicho elem. a la última posición de la lista; AÑADE.
-    # An.insert(x, int(AnP))  # añade, inserta en la posición x de la lista.
-
-    Aptr = (Ab*Mult) / Ap  # ; A' prima igual a, "Ao" entre "A necesarios". [para luego, 60*(mA*h)/mA]
-
-    # Entonces Ap-tr será el 'tiempo relativo'.. Ap*60 = Tmin. Que introduciremos consiguientemente:
-    Tmin.append(str(Aptr * 60))
-    # Ap es una CONSTANTE, NO ES Amphere; mucho menos. Entonces da.. por 60, los mins de vida.
-    # aquí deberá haber un diferencial.. una especie de.
-
-promTmin = ((float(Tmin[0]) + float(Tmin[1])) / (2 * Mult))
-# convistiendolos de string a float para poder usar los decimales.. !
-
-promA = (A[0] + A[1]) / (2*Mult)
-# Aún no sabia para qué lo iba a usar (deberá ser alguna cuenta promediada, lo cual no cuadra
-# ya que no nos conviene hablar acerca de un A promedio puesto que no ocurrirá,
-# ese amperaje varía y a muy altos A será en corto tiempo. NO NOS CONVIENE USAR "A promedio".
-# EDIT: sí nos conviene puesto que A[] está vinculado al Ampheraje que necesitará el motor, por el
-# hecho de que la batería posee dos voltajes.. uno cuando está cargado y otro cuando está descargándose.
-
 # promV = ((Vo[0]+Vo[1])/200)  # promedio voltios de los de la batería.
 # ^ lo coloqué dentro del while.
 
@@ -194,6 +162,39 @@ try:
 finally:
     print("\t\nOk, suponemos que el motor estará trabajando o recibiendo, un voltaje de",
           str(format(Vo[1]/Mult, ".2f")) + "V, inicialmente.")
+
+Tmin = []  # tiempo relativo que será ya en minutos.
+
+for x in range(2):
+    # por ser sólo dos valores en Vo.
+
+    # Ao = (mAh / 1000) * C ; no se usará, vea:
+    Ap = Wn / int(Vo[x] / Mult)  # Mult para contrarrestar los cien que le metí antes y así aprovechar los decimales pertinentes. Prima
+    # recordemos: W = i * V. Y de ello, con los Watts del motor y los Voltios de la batería damos con el A para nuestro T.
+    # T = Ab / (A * C) ; C es inversamente proporcional a la corriente (en este caso, Ab) de la batería para su tiempo de descarga.
+
+    A.append(int(Ap * Mult))
+    # se multiplica por Mult para luego lograr usar los decimales, puesto que las listas solo sportan str() e int().
+    # añade dicho elem. a la última posición de la lista; AÑADE.
+    # An.insert(x, int(AnP))  # añade, inserta en la posición x de la lista.
+
+    Aptr = (Ab*Mult) / Ap  # ; A' prima igual a, "Ao" entre "A necesarios". [para luego, 60*(mA*h)/mA]
+
+    # Entonces Ap-tr será el 'tiempo relativo'.. Ap*60 = Tmin. Que introduciremos consiguientemente:
+    Tmin.append(str(Aptr * 60))
+    # Ap es una CONSTANTE, NO ES Amphere; mucho menos. Entonces da.. por 60, los mins de vida.
+    # aquí deberá haber un diferencial.. una especie de.
+
+promTmin = ((float(Tmin[0]) + float(Tmin[1])) / (2 * Mult))
+# convistiendolos de string a float para poder usar los decimales.. !
+
+promA = (A[0] + A[1]) / (2*Mult)
+# Aún no sabia para qué lo iba a usar (deberá ser alguna cuenta promediada, lo cual no cuadra
+# ya que no nos conviene hablar acerca de un A promedio puesto que no ocurrirá,
+# ese amperaje varía y a muy altos A será en corto tiempo. NO NOS CONVIENE USAR "A promedio".
+# EDIT: sí nos conviene puesto que A[] está vinculado al Ampheraje que necesitará el motor, por el
+# hecho de que la batería posee dos voltajes.. uno cuando está cargado y otro cuando está descargándose.
+
 
 Wp = V * promA  # Watts (potencia) que usted MANDARÁ a salir, de carga, DE LA BATERÍA.
 # ..en promedio!
