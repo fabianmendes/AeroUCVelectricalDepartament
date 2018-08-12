@@ -60,8 +60,7 @@ try:
         C = input("\tIngrese la Capacidad de DESCARGA (C) = ")
         if bool(C):
             if int(C):
-                C = int(C)
-                
+                C = int(C)                
                 if C in range(10,101):
                     C = int(C)
                     C = abs(C)
@@ -115,7 +114,6 @@ Ao = (mAh / 1000) * C  # se comentó porque este Ao es de la batería mismo. Yea
 # continua, y de explosición (por unos mSeg, máx POWER).
 # y EN REALIDAD ES: # En una hora puede dar ( )mA a una capacidad de descarga de ( )C = Ao
 # Listo.
-
 Ab = (Ao / C)  # Ab son los ampere de la batería. Los cuales serán usados para medir el T. Recordemos que esta dividido por 1h.
 
 print("\t\tAmphere que PODRÍA llegar a pasar por el ESC: Ao = ",
@@ -217,6 +215,7 @@ promA = (A[0] + A[1]) / (2*Mult)
 # EDIT: sí nos conviene puesto que A[] está vinculado al Ampheraje que necesitará el motor, por el
 # hecho de que la batería posee dos voltajes.. uno cuando está cargado y otro cuando está descargándose.
 
+
 Wp = V * promA  # Watts (potencia) que usted MANDARÁ a salir, de carga, DE LA BATERÍA.
 # ..en promedio!
 # Voltios que proporcionará la batería. Min 18v, max 22~24v,
@@ -235,7 +234,6 @@ Wo = []
 for x in range(2):
     W = float(Vo[x] * A[x]) / pow(Mult, 2)  # RECORDAR que ambos estaban Mult. por 1000.. (Mult = 10^3)
     Wo.append(str(format(W, ".2f")))
-
 
 TminImpri = float(Tmin[1]) / Mult
 # EROR Resuelto. Había que convertir el valor que estaba en la lista 'Tmin[]' porque era str()...
