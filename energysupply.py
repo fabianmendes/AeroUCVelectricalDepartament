@@ -60,7 +60,7 @@ try:
         C = input("\tIngrese la Capacidad de DESCARGA (C) = ")
         if bool(C):
             if int(C):
-                C = int(C)
+                C = int(C)                
                 if C in range(10,101):
                     C = int(C)
                     C = abs(C)
